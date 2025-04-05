@@ -52,8 +52,32 @@ done &
 exec dwm
 ```
 
-
 ## Configuration
 
 The configuration of dwm is done by creating a custom config.h
 and (re)compiling the source code.
+
+## Additional Stuff
+
+Not necessarily about dwm
+
+### Setting background
+
+Packages:
+ - feh
+
+```cmd
+$ feh --bg-scale <image.jpg>
+```
+
+### Window transparency
+
+Packages:
+ - xcompmgr
+ - transset-df
+
+```cmd
+$ xcompmgr & # add to .xinitrc
+$ transset .50 # or any number
+# click the window you want to be transparent
+```
