@@ -1,5 +1,5 @@
 
-![dwm logo](dwm.png)
+![dwm logo](https://dwm.suckless.org/dwm.svg)
 
 # dwm - dynamic window manager
 
