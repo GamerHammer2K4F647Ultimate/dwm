@@ -69,8 +69,8 @@ static const char *monitor[] = { "/usr/bin/btop", NULL };
 static const char *termcmd[]  = { "st", NULL };
 
 //volume controls
-static const char *upvol[]   = { "amixer", "-q", "set", "Master", "5%+", "unmute", NULL };
-static const char *downvol[] = { "amixer", "-q", "set", "Master", "5%-", "unmute", NULL };
+static const char *upvol[]   = { "amixer", "-q", "set", "Master", "2%+", "unmute", NULL };
+static const char *downvol[] = { "amixer", "-q", "set", "Master", "2%-", "unmute", NULL };
 static const char *mutevol[] = { "amixer", "-q", "set", "Master", "toggle", NULL };
 
 static const Key keys[] = {
@@ -101,6 +101,7 @@ static const Key keys[] = {
 	{ MODKEY,                       XK_F3,     spawn,          {.v = upvol   } },
     { MODKEY,                       XK_F2,     spawn,          {.v = downvol } },
     { MODKEY,                       XK_F1,     spawn,          {.v = mutevol } },
+	{ ControlMask, 					XK_F1, 	   spawn, 		   {.v = monitor } }, // we will have to see in a vm/actual install (me, on windows using wsl)
 	TAGKEYS(                        XK_1,                      0)
 	TAGKEYS(                        XK_2,                      1)
 	TAGKEYS(                        XK_3,                      2)
