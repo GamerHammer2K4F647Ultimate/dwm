@@ -70,6 +70,11 @@ Packages:
 $ feh --bg-scale <image.jpg>
 ```
 
+add to bashrc/zshrc/whatevershellrc:
+```
+alias setbg='feh --bg-scale'
+```
+
 ### Window transparency
 
 Packages:
