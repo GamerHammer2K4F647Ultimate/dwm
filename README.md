@@ -1,4 +1,3 @@
-
 ![dwm logo](https://dwm.suckless.org/dwm.svg)
 
 # dwm - dynamic window manager
@@ -24,7 +23,7 @@ the /usr/local namespace by default).
 
 Afterwards enter the following command to build and install dwm (if
 necessary as root):
-```cmd
+```console
 $ make clean install
 ```
 
@@ -66,7 +65,7 @@ Not necessarily about dwm
 Packages:
  - feh
 
-```cmd
+```console
 $ feh --bg-scale <image.jpg>
 ```
 
@@ -81,7 +80,7 @@ Packages:
  - xcompmgr
  - transset-df
 
-```cmd
+```console
 $ xcompmgr & # add to .xinitrc
 $ transset .50 # or any number
 # click the window you want to be transparent
