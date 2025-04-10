@@ -68,6 +68,8 @@ static const char *monitor[] = { "/usr/bin/btop", NULL };
 
 static const char *termcmd[]  = { "st", NULL };
 
+static const char *boomer[] = { "boomer", NULL };
+
 //volume controls
 static const char *upvol[]   = { "amixer", "-q", "set", "Master", "2%+", "unmute", NULL };
 static const char *downvol[] = { "amixer", "-q", "set", "Master", "2%-", "unmute", NULL };
@@ -112,6 +114,7 @@ static const Key keys[] = {
 	TAGKEYS(                        XK_8,                      7)
 	TAGKEYS(                        XK_9,                      8)
 	{ MODKEY|ShiftMask,             XK_q,      quit,           {0} },
+    { ShiftMask,                    XK_0,      spawn,          { .v = boomer } },
 };
 
 /* button definitions */
