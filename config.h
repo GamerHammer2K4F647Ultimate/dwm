@@ -5,8 +5,8 @@ static const unsigned int borderpx  = 1;        /* border pixel of windows */
 static const unsigned int snap      = 32;       /* snap pixel */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
-static const char *fonts[]          = { "Iosevka:size=10" };
-static const char dmenufont[]       = "Iosevka:size=10";
+static const char *fonts[]          = { "Liberation Mono:size=10", "fontawesome:size=10" };
+static const char dmenufont[]       = "Liberation Mono:size=10";
 //background color
 static const char col_gray1[]       = "#222222";
 //inactive window border color
@@ -22,6 +22,8 @@ static const char *colors[][3]      = {
 	[SchemeNorm] = { col_gray3, col_gray1, col_gray2 },
 	[SchemeSel]  = { col_gray4, col_cyan,  col_cyan  },
 };
+
+#include <X11/XF86keysym.h>
 
 /* tagging */
 static const char *tags[] = { "1", "2", "3", "4", "5", "6", "7", "8", "9" };
@@ -71,14 +73,16 @@ static const char *termcmd[]  = { "st", NULL };
 static const char *boomer[] = { "boomer", NULL };
 
 //volume controls
-static const char *upvol[]   = { "amixer", "-q", "set", "Master", "2%+", "unmute", NULL };
-static const char *downvol[] = { "amixer", "-q", "set", "Master", "2%-", "unmute", NULL };
-static const char *mutevol[] = { "amixer", "-q", "set", "Master", "toggle", NULL };
+static const char *upvol[]   = { "pamixer", "-i", "2", NULL };
+static const char *downvol[] = { "pamixer", "-d", "2", NULL };
+static const char *mutevol[] = { "paxmier", "-t", NULL };
+
+
 
 static const Key keys[] = {
 	/* modifier                     key        function        argument */
 	{ MODKEY,                       XK_p,      spawn,          {.v = dmenucmd } },
-	{ MODKEY|ShiftMask,             XK_Return, spawn,          {.v = termcmd } },
+	{ MODKEY,             XK_Return, spawn,          {.v = termcmd } },
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
 	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
 	{ MODKEY,                       XK_k,      focusstack,     {.i = -1 } },
@@ -86,7 +90,7 @@ static const Key keys[] = {
 	{ MODKEY,                       XK_d,      incnmaster,     {.i = -1 } },
 	{ MODKEY,                       XK_h,      setmfact,       {.f = -0.05} },
 	{ MODKEY,                       XK_l,      setmfact,       {.f = +0.05} },
-	{ MODKEY,                       XK_Return, zoom,           {0} },
+	{ MODKEY|ShiftMask,                       XK_Return, zoom,           {0} },
 	{ MODKEY,                       XK_Tab,    view,           {0} },
 	{ MODKEY|ShiftMask,             XK_c,      killclient,     {0} },
 	{ MODKEY,                       XK_t,      setlayout,      {.v = &layouts[0]} },
@@ -100,9 +104,9 @@ static const Key keys[] = {
 	{ MODKEY,                       XK_period, focusmon,       {.i = +1 } },
 	{ MODKEY|ShiftMask,             XK_comma,  tagmon,         {.i = -1 } },
 	{ MODKEY|ShiftMask,             XK_period, tagmon,         {.i = +1 } },
-	{ MODKEY,                       XK_F3,     spawn,          {.v = upvol   } },
-    { MODKEY,                       XK_F2,     spawn,          {.v = downvol } },
-    { MODKEY,                       XK_F1,     spawn,          {.v = mutevol } },
+	{ 0,                       XF86XK_AudioRaiseVolume,     spawn,          {.v = upvol   } },
+    { 0,                       XF86XK_AudioLowerVolume,     spawn,          {.v = downvol } },
+    { 0,                       XF86XK_AudioMute,     spawn,          {.v = mutevol } },
 	{ ControlMask, 					XK_F1, 	   spawn, 		   {.v = monitor } }, // we will have to see in a vm/actual install (me, on windows using wsl)
 	TAGKEYS(                        XK_1,                      0)
 	TAGKEYS(                        XK_2,                      1)
