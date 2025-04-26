@@ -66,7 +66,7 @@ static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() 
 static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL };
 
 //launches btop
-static const char *monitor[] = { "/usr/bin/btop", NULL };
+static const char *monitor[] = { "st /usr/bin/btop", NULL };
 
 static const char *termcmd[]  = { "st", NULL };
 
@@ -77,6 +77,7 @@ static const char *upvol[]   = { "pamixer", "-i", "2", NULL };
 static const char *downvol[] = { "pamixer", "-d", "2", NULL };
 static const char *mutevol[] = { "paxmier", "-t", NULL };
 
+static const char *tux[] = { "tux", NULL };
 
 
 static const Key keys[] = {
@@ -90,24 +91,25 @@ static const Key keys[] = {
 	{ MODKEY,                       XK_d,      incnmaster,     {.i = -1 } },
 	{ MODKEY,                       XK_h,      setmfact,       {.f = -0.05} },
 	{ MODKEY,                       XK_l,      setmfact,       {.f = +0.05} },
-	{ MODKEY|ShiftMask,                       XK_Return, zoom,           {0} },
+	{ MODKEY|ShiftMask,             XK_Return, zoom,           {0} },
 	{ MODKEY,                       XK_Tab,    view,           {0} },
 	{ MODKEY|ShiftMask,             XK_c,      killclient,     {0} },
 	{ MODKEY,                       XK_t,      setlayout,      {.v = &layouts[0]} },
 	{ MODKEY,                       XK_f,      setlayout,      {.v = &layouts[1]} },
 	{ MODKEY,                       XK_m,      setlayout,      {.v = &layouts[2]} },
 	{ MODKEY,                       XK_space,  setlayout,      {0} },
-	{ ShiftMask,             XK_space,  togglefloating, {0} },
+	{ MODKEY|ShiftMask,             XK_space,  togglefloating, {0} },
 	{ MODKEY,                       XK_0,      view,           {.ui = ~0 } },
 	{ MODKEY|ShiftMask,             XK_0,      tag,            {.ui = ~0 } },
 	{ MODKEY,                       XK_comma,  focusmon,       {.i = -1 } },
 	{ MODKEY,                       XK_period, focusmon,       {.i = +1 } },
 	{ MODKEY|ShiftMask,             XK_comma,  tagmon,         {.i = -1 } },
 	{ MODKEY|ShiftMask,             XK_period, tagmon,         {.i = +1 } },
-	{ 0,                       XF86XK_AudioRaiseVolume,     spawn,          {.v = upvol   } },
-    { 0,                       XF86XK_AudioLowerVolume,     spawn,          {.v = downvol } },
-    { 0,                       XF86XK_AudioMute,     spawn,          {.v = mutevol } },
-	{ ControlMask, 					XK_F1, 	   spawn, 		   {.v = monitor } }, // we will have to see in a vm/actual install (me, on windows using wsl)
+	{ 0,                            XF86XK_AudioRaiseVolume,     spawn,          {.v = upvol   } },
+    { 0,                            XF86XK_AudioLowerVolume,     spawn,          {.v = downvol } },
+    { 0,                            XF86XK_AudioMute,            spawn,          {.v = mutevol } },
+	{ ControlMask, 					XK_F1, 	   spawn, 		   {.v = monitor } }, 
+    { ControlMask|ShiftMask|MODKEY, XK_t,      spawn,          {.v = tux } }, 
 	TAGKEYS(                        XK_1,                      0)
 	TAGKEYS(                        XK_2,                      1)
 	TAGKEYS(                        XK_3,                      2)

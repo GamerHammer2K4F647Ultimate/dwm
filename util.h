@@ -6,4 +6,4 @@
 #define LENGTH(X)               (sizeof (X) / sizeof (X)[0])
 
 void die(const char *fmt, ...);
-void *ecalloc(size_t nmemb, size_t size);
+void *ecalloc(size_t nmemb, size_t size); 
